@@ -1,0 +1,67 @@
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-header>
+        Liste Des Agrements
+        <button (click)="goToCreate()" cButton class="float-end" color="primary">
+          <h5>+</h5>
+        </button>
+      </c-card-header>
+      <c-card-body>
+        <table
+          [hover]="true"
+          [responsive]="true"
+          [striped]="true"
+          align="middle"
+          cTable
+          class="mb-0 border"
+        >
+          <thead cTableColor="light">
+          <tr>
+            <th>Numéro</th>
+            <th class="text-center">Code</th>
+            <th>Libelle</th>
+            <th class="text-center">Durée</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let agrement of agrements;">
+            <td>
+              {{ agrement.numeroAgrement }}
+            </td>
+            <td class="text-center">
+              {{ agrement.code }}
+            </td>
+            <td>
+              {{ agrement.libelle }}
+            </td>
+            <td class="text-center">
+              {{ agrement.duree }}
+            </td>
+            <td class="text-center">
+              <button (click)="updateAgrement(agrement.id)" cButton color="primary">Modifier</button>
+              <button [cModalToggle]="confirmationModal.id" cButton color="danger" style="margin-left: 10px" (click)="delete(agrement.id)">Supprimer</button> </td>
+          </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+<!-- Modal -->
+<c-modal #confirmationModal alignment="center" id="confirmationModal">
+  <c-modal-header>
+    <h5 cModalTitle>Confirmation de suppression</h5>
+    <button [cModalToggle]="confirmationModal.id" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    Êtes-vous sûr de vouloir supprimer ce élement du tableau ?
+  </c-modal-body>
+  <c-modal-footer>
+    <button [cModalToggle]="confirmationModal.id" cButton color="secondary">
+      Annuler
+    </button>
+    <button [cModalToggle]="confirmationModal.id" cButton color="primary" (click)="confirmDelete()">Supprimer</button>
+  </c-modal-footer>
+</c-modal>

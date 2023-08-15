@@ -1,0 +1,45 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>{{title}}</strong>
+      </c-card-header>
+      <c-card-body>
+        <form #customStylesForm="ngForm"
+              (ngSubmit)="onSubmit1()"
+              [gutter]="3"
+              [validated]="customStylesValidated"
+              novalidate
+              cForm cRow
+              class="needs-validation"
+        >
+          <c-col [md]="6">
+            <label cLabel for="code">code</label>
+            <input cFormControl id="code" required type="text" name="code" [(ngModel)]="agrements.code"/>
+            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+          </c-col>
+          <c-col [md]="6">
+            <label cLabel for="numAgrement">Numéro agrement</label>
+            <input cFormControl id="numAgrement" required type="number" name="numAgrement" [(ngModel)]="agrements.numeroAgrement"/>
+            <c-form-feedback [valid]="true">Looks good!</c-form-feedback>
+          </c-col>
+          <c-col [md]="6">
+            <label cLabel for="libelle">libelle</label>
+            <input cFormControl id="libelle" required type="text" name="libelle" [(ngModel)]="agrements.libelle" />
+            <c-form-feedback [valid]="false">Please provide a valid city.</c-form-feedback>
+          </c-col>
+          <c-col [md]="6">
+            <label cLabel for="duree">Duree</label>
+            <input cFormControl id="duree" required type="number" name="duree" [(ngModel)]="agrements.duree"/>
+            <c-form-feedback [valid]="false">Please provide a valid city.</c-form-feedback>
+          </c-col>
+          <c-col [xs]="12">
+            <button cButton class="me-1" color="primary" type="submit">
+              Enregistrer
+            </button>
+          </c-col>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
